@@ -1,6 +1,6 @@
 <template>
     <div class="helpBubble ${helpVisible ? 'hide' : ''}"
-         click.delegate="showHelp()">?</div>
+         click.trigger="showHelp()">?</div>
     <div class="helpContent ${helpVisible ? 'up' : 'down'}">
 
         <h2>
@@ -15,6 +15,6 @@
         <p>This is a game is inspired by <a target="_blank" href="https://play2048.co/">2048</a> and it is written with <a target="_blank" href="https://aurelia.io/">AureliaJs</a></p>
         <p>Made by <a target="_blank" href="/">ashWare</a></p>
         <div class="closeHelp"
-             click.delegate="hideHelp()">&times;</div>
+             click.trigger="hideHelp()">&times;</div>
     </div>
 </template>
