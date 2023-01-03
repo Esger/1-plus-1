@@ -1,0 +1,48 @@
+:root {
+  --bgColor: #d3bbd3;
+  --primaryColor: #584667;
+  --tileColor: #f3a5a5;
+}
+body,
+html {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+@supports (height:100dvh) {
+  body,
+  html {
+    height: 100dvh;
+  }
+}
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background-color: var(--bgColor);
+  background-image: linear-gradient(-45deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.05));
+  background-size: 5px;
+}
+.shiny {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background-repeat: repeat-x;
+  background-position: 50% 0;
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.7);
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 100px 40px;
+  border-bottom-left-radius: 100px 40px;
+}
+.qrCode {
+  position: absolute;
+  left: 2vmin;
+  bottom: 2vmin;
+  width: min(75px,10vmin);
+  height: min(75px,10vmin);
+}
