@@ -89,7 +89,7 @@ export class BoardCustomElement {
             this._currentTile = this.board[move.tile.y][move.tile.x];
             this._moveIfValid(move); // x,y,directions[y,x]
         });
-        this.restartListener = this._eventAggregator.subscribe('restart', () => {
+        this.restartListener = this._eventAggregator.subscribe('restart', _ => {
             this._restartGame();
         });
     }

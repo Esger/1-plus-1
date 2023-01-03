@@ -1,16 +1,16 @@
 .tile {
     background-color   : var(--tileColor);
     border             : 0 solid #666;
-    border-radius      : @tileCornerRadius;
+    border-radius      : var(--tileCornerRadius);
     box-shadow         : 0 2px 2px #aaa;
     // color           : darken( var(--primaryColor), 90%);
     cursor             : grab;
     display            : block;
-    height             : @tileSize;
+    height             : var(--tileSize);
     overflow           : hidden;
     position           : absolute;
     transition         : background-color .2s ease-in-out, opacity .2s ease-in-out;
-    width              : @tileSize;
+    width              : var(--tileSize);
 
     &.animated {
         transition: background-color .2s ease-in-out, opacity .2s ease-in-out, transform .2s ease-out;
@@ -74,7 +74,7 @@
 
     &::before {
         content        : attr(data-value);
-        font           : normal @tileFontSize/@tileSize "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font           : normal var(--tileFontSize)/var(--tileSize) "Trebuchet MS", Arial, Helvetica, sans-serif;
         text-align     : center;
         text-decoration: none;
         text-shadow    : 0 1px 1px #ccc;
@@ -87,6 +87,6 @@
     }
 
     &#tile_2-2::before {
-        color: forestgreen;
+        color: var(--accentColor);
     }
 }

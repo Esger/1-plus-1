@@ -4,19 +4,19 @@
 game {
     align-items      : center;
     // background    : linear-gradient(to bottom, @lightGrey 0%, @darkGrey 100%);
-    border-radius    : calc(~ '2 * @{gameBorder}');
+    border-radius    : calc(~ '2 * var(--gameBorder)');
     // box-shadow    : 0 3px 4px #222;
     display          : flex;
     flex-direction   : column;
-    padding-bottom   : @gameBorder;
+    padding-bottom   : var(--gameBorder);
     position         : relative;
     transform        : scale(1.4);
-    width            : calc(~ '@{boardSize} + 2 * @{gameBorder}');
+    width            : calc(~ 'var(--boardSize) + 2 * var(--gameBorder)');
 
     header {
         position: relative;
-        margin  : calc(~'@{gameBorder} / 2') 0;
-        width   : @boardSize;
+        margin  : calc(~'var(--gameBorder) / 2') 0;
+        width   : var(--boardSize);
 
         h1,
         h2 {
@@ -44,7 +44,7 @@ game {
             text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25);
             font-size  : 6vmin;
             z-index    : -1;
-            width      : @boardSize;
+            width      : var(--boardSize);
 
             @media screen and (orientation:landscape) {
                 margin: 4vmin 0 0;
