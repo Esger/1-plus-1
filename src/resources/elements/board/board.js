@@ -116,7 +116,6 @@ export class BoardCustomElement {
             // wait for animation to target
             setTimeout(() => {
                 this._eventAggregator.publish('correct', targetTile);
-                targetTile.value *= 2;
                 this._setBackTiles(tilesBehind, move.directions);
                 this._shiftValues(tilesBehind, move.directions);
 
@@ -162,14 +161,20 @@ export class BoardCustomElement {
     }
 
     _shiftValues(tiles, directions) {
+        const setTileValue = (tile, value) => {
+            this._eventAggregator.publish('tileValue', {
+                tile: tile,
+                value: value
+            });
+        }
         // shift values of tiles one place in same direction as moved tile
-        let last = tiles.length - 1;
+        const last = tiles.length - 1;
         for (let i = 0; i < last; i++) {
-            this.board[tiles[i].y][tiles[i].x].value = this.board[tiles[i].y - directions[0]][tiles[i].x - directions[1]].value;
+            setTileValue(this.board[tiles[i].y][tiles[i].x], this.board[tiles[i].y - directions[0]][tiles[i].x - directions[1]].value);
         }
 
         // fill outermost tile with random power of 2 smaller than highestValue
-        this.board[tiles[last].y][tiles[last].x].value = this._getRandomPowerOf2();
+        setTileValue(this.board[tiles[last].y][tiles[last].x], this._getRandomPowerOf2());
     }
 
     _animateTiles(tiles, directions) {

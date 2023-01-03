@@ -24,14 +24,21 @@ export class GameCustomElement {
         });
         this._moveSubscription = this._eventAggregator.subscribe('moves', moves => {
             this.moves = moves.moves;
+            this.canUndo = moves.moves > 0;
         })
-        this._resetScoreSubscription = this._eventAggregator.subscribe('reset-score', value => {
+        this._resetScoreSubscription = this._eventAggregator.subscribe('reset-score', _ => {
             this._resetScore();
         });
     }
 
     _resetScore() {
         this.title = '1+1';
+        this.canUndo = false;
+    }
+
+    undo() {
+        this._eventAggregator.publish('undo');
+        this.canUndo = false;
     }
 
     restart() {

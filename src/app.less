@@ -10,6 +10,7 @@
     --bgColor         : #d3bbd3;
     --primaryColor    : #584667;
     --tileColor       : #f3a5a5;
+    --accentColor     : forestgreen;
 }
 
 body,
@@ -52,8 +53,8 @@ body {
 
 .qrCode {
     position    : absolute;
-    left        : @tileGutterSize;
-    bottom      : @tileGutterSize;
+    left        : var(--tileGutterSize);
+    bottom      : var(--tileGutterSize);
     width       : 10vmin;
     max-width   : 75px;
     aspect-ratio: 1;

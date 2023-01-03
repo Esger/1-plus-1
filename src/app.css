@@ -1,7 +1,14 @@
 :root {
+  --boardSize: 55vmin;
+  --gameBorder: 2.5vmin;
+  --tileSize: 9vmin;
+  --tileGutterSize: 2vmin;
+  --tileCornerRadius: 1vmin;
+  --tileFontSize: 3vmin;
   --bgColor: #d3bbd3;
   --primaryColor: #584667;
   --tileColor: #f3a5a5;
+  --accentColor: forestgreen;
 }
 body,
 html {
@@ -41,8 +48,8 @@ body {
 }
 .qrCode {
   position: absolute;
-  left: 2vmin;
-  bottom: 2vmin;
+  left: var(--tileGutterSize);
+  bottom: var(--tileGutterSize);
   width: 10vmin;
   max-width: 75px;
   aspect-ratio: 1;

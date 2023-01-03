@@ -51,15 +51,29 @@ game {
             }
         }
 
-        h3.moves {
+        h3 {
             position   : absolute;
             top        : 1vmin;
-            right      : 2vmin;
-            color      : var(--tileColor);
             font-size  : 2vmin;
             text-shadow: none;
             margin     : 0;
+
+            &.moves {
+                color: var(--tileColor);
+                right: 2vmin;
+            }
+
+            &.undo {
+                cursor: pointer;
+                color : var(--accentColor);
+                left  : 2vmin;
+
+                &.undo--enabled {
+                    color: lime;
+                }
+            }
         }
+
 
         .dummy {
             opacity: 0;
