@@ -4,19 +4,19 @@
 game {
     align-items      : center;
     // background    : linear-gradient(to bottom, @lightGrey 0%, @darkGrey 100%);
-    border-radius    : calc(~ '2 * @{gameBorder}');
+    border-radius    : calc(~ '2 * var(--gameBorder)');
     // box-shadow    : 0 3px 4px #222;
     display          : flex;
     flex-direction   : column;
-    padding-bottom   : @gameBorder;
+    padding-bottom   : var(--gameBorder);
     position         : relative;
     transform        : scale(1.4);
-    width            : calc(~ '@{boardSize} + 2 * @{gameBorder}');
+    width            : calc(~ 'var(--boardSize) + 2 * var(--gameBorder)');
 
     header {
         position: relative;
-        margin  : calc(~'@{gameBorder} / 2') 0;
-        width   : @boardSize;
+        margin  : calc(~'var(--gameBorder) / 2') 0;
+        width   : var(--boardSize);
 
         h1,
         h2 {
@@ -42,24 +42,38 @@ game {
             position   : absolute;
             top        : 2vmin;
             text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25);
-            font-size  : 6vmin;
+            font-size  : 5vmin;
             z-index    : -1;
-            width      : @boardSize;
+            width      : var(--boardSize);
 
             @media screen and (orientation:landscape) {
                 margin: 4vmin 0 0;
             }
         }
 
-        h3.moves {
+        h3 {
             position   : absolute;
             top        : 1vmin;
-            right      : 2vmin;
-            color      : var(--tileColor);
             font-size  : 2vmin;
             text-shadow: none;
             margin     : 0;
+
+            &.moves {
+                color: var(--tileColor);
+                right: 2vmin;
+            }
+
+            &.undo {
+                cursor: pointer;
+                color : var(--accentColor);
+                left  : 2vmin;
+
+                &.undo--enabled {
+                    color: lime;
+                }
+            }
         }
+
 
         .dummy {
             opacity: 0;

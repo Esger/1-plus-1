@@ -6,6 +6,8 @@
             title="Click to restart"
             click.delegate="restart()">${title}</h1>
         <h3 class="moves">Moves: ${moves}</h3>
+        <h3 class="undo ${canUndo ? 'undo--enabled' : ''}"
+            click.delegate="canUndo && undo()">Undo</h3>
     </header>
     <board mousedown.delegate="dragService.startDrag($event)"
            touchstart.delegate="dragService.startDrag($event)"

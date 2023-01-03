@@ -1,15 +1,18 @@
 // Definitions
-@boardSize       : 55vmin; // tileCount * 10
-@gameBorder      : 2.5vmin;
-@tileSize        : 9vmin;
-@tileGutterSize  : 2vmin;
-@tileFontSize    : 3vmin;
-@tileCornerRadius: 1vmin;
 
-:root {
-    --bgColor     : #d3bbd3;
-    --primaryColor: #584667;
-    --tileColor   : #f3a5a5;
+:root,
+*:before,
+*:after {
+    --boardSize       : 55vmin;
+    --gameBorder      : 2.5vmin;
+    --tileSize        : 9vmin;
+    --tileGutterSize  : 2vmin;
+    --tileCornerRadius: 1vmin;
+    --tileFontSize    : 3vmin;
+    --bgColor         : #d3bbd3;
+    --primaryColor    : #584667;
+    --tileColor       : #f3a5a5;
+    --accentColor     : forestgreen;
 }
 
 body,
@@ -52,8 +55,8 @@ body {
 
 .qrCode {
     position    : absolute;
-    left        : @tileGutterSize;
-    bottom      : @tileGutterSize;
+    left        : var(--tileGutterSize);
+    bottom      : var(--tileGutterSize);
     width       : 10vmin;
     max-width   : 75px;
     aspect-ratio: 1;
