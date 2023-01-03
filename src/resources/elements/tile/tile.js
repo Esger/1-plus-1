@@ -15,6 +15,7 @@ export class TileCustomElement {
         this._eventAggregator = eventAggregator;
         this._element = element;
         this._allowedDirections = [];
+        this.changed = false;
         this.locked = false;
         this.animated = false;
         this.correct = false;
@@ -28,6 +29,7 @@ export class TileCustomElement {
 
     attached() {
         this._allowedDirections = [this._allowed(this.tile.y), this._allowed(this.tile.x)];
+        this._previousValue = this.tile.value;
         this._addListeners();
     }
 
@@ -42,6 +44,8 @@ export class TileCustomElement {
         this._startDragListener.dispose();
         this._stopDragListener.dispose();
         this._unlockListener.dispose();
+        this._undoListener.dispose();
+        this._tileValueListener.dispose();
     }
 
     _addListeners() {
@@ -54,7 +58,7 @@ export class TileCustomElement {
                 this.onfire = true;
             }
         });
-        
+
         this._animateListener = this._eventAggregator.subscribe('move', move => {
             if (move.tile.id == this.tile.id) {
                 this._animate(move.directions, move.animate);
@@ -63,10 +67,15 @@ export class TileCustomElement {
 
         this._correctMoveListener = this._eventAggregator.subscribe('correct', tile => {
             if (tile.id == this.tile.id) {
+                this._previousValue = this.tile.value;
+                this.tile.value *= 2;
+                this.changed = true;
                 this.correct = true;
                 setTimeout(() => {
                     this.correct = false;
                 }, 750);
+            } else {
+                this.changed = false;
             }
         });
 
@@ -112,6 +121,19 @@ export class TileCustomElement {
             }
         });
 
+        this._undoListener = this._eventAggregator.subscribe('undo', tile => {
+            if (this.changed) {
+                this.tile.value = this._previousValue;
+            }
+        });
+
+        this._tileValueListener = this._eventAggregator.subscribe('tileValue', data => {
+            if (data.tile.id == this.tile.id) {
+                this._previousValue = this.tile.value;
+                this.tile.value = data.value;
+                this.changed = true;
+            }
+        })
     }
 
     _allowed(value) {
