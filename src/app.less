@@ -51,9 +51,10 @@ body {
 }
 
 .qrCode {
-    position: absolute;
-    left    : @tileGutterSize;
-    bottom  : @tileGutterSize;
-    width   : ~'min(75px,10vmin)';
-    height  : ~'min(75px,10vmin)';
+    position    : absolute;
+    left        : @tileGutterSize;
+    bottom      : @tileGutterSize;
+    width       : 10vmin;
+    max-width   : 75px;
+    aspect-ratio: 1;
 }

@@ -43,6 +43,7 @@ body {
   position: absolute;
   left: 2vmin;
   bottom: 2vmin;
-  width: min(75px,10vmin);
-  height: min(75px,10vmin);
+  width: 10vmin;
+  max-width: 75px;
+  aspect-ratio: 1;
 }
